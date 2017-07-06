@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { View, Text, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
-import { connect } from 'react-redux'
-
+import { connect } from 'react-redux';
+import { toggleIsAdding } from '../redux/actionCreators';
 
 class Header extends Component {
   render() {
@@ -9,7 +9,7 @@ class Header extends Component {
       <View style ={styles.header}>
         <Text />
         <Text>MY WORDS</Text>
-        <TouchableOpacity onPress = {()=> this.props.dispatch({ type: 'TOGGLE_IS_ADDING'})}>
+        <TouchableOpacity onPress = {()=> this.props.toggleIsAdding()}>
           <Text>+</Text>
         </TouchableOpacity>
       </View>
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect()(Header)
+export default connect(null, { toggleIsAdding: toggleIsAdding})(Header)
